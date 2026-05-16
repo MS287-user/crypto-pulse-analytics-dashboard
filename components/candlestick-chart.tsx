@@ -58,7 +58,7 @@ const CandlestickChart = ({
   useEffect(() => {
     const container = chartContainerRef.current;
 
-    if (!container) return;
+    if (!container || !chartRef.current) return;
 
     const showTime = ["daily", "weekly", "monthly"].includes(period);
     const chart = createChart(container, {
@@ -99,7 +99,7 @@ const CandlestickChart = ({
       chartRef.current = null;
       candleSeriesRef.current = null;
     };
-  }, [height]);
+  }, [height, period]);
 
   useEffect(() => {
     if (!candleSeriesRef.current) return;
